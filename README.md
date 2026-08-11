@@ -14,7 +14,7 @@ Madeira.
 | `data/julgados_paz.csv` | Julgados de paz (sedes, delegações, balcões) | Conselho dos Julgados de Paz | 48 |
 | `data/inmlcf.csv` | INMLCF — delegações + gabinetes médico-legais | inmlcf.justica.gov.pt | 36 |
 | `data/arbitragem.csv` | Centros de arbitragem autorizados | DGPJ | 39 |
-| `data/registos.csv` | Conservatórias / registos e notariado | IRN | (harvesting) |
+| `data/registos.csv` | Conservatórias + cartórios notariais | IRN + Ordem dos Notários | 1,062 |
 
 Every dataset ships as CSV + JSON. The family datasets share a 13-column
 schema: `name, category, address, postal_code, locality, district_or_region,
@@ -24,7 +24,10 @@ scraper lives in `scrapers/<family>.py` (stdlib only).
 
 Known coverage facts: the julgados de paz network has never covered the
 Azores (Madeira yes, via Funchal); DGRSP publishes no per-establishment
-emails; arbitration centres cluster in the major cities by nature.
+emails; arbitration centres cluster in the major cities by nature; ~27% of
+registos rows (mostly notary stubs whose notarios.pt detail pages 404) lack a
+district, and contact fields are complete for conservatórias but sparse for
+cartórios — an enrichment pass could close both.
 
 ## Citius directory (`data/directory.csv`)
 
